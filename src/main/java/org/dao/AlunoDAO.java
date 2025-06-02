@@ -10,7 +10,7 @@ import java.util.List;
 public class AlunoDAO {
 
     public boolean cadastrar_aluno(Aluno aluno) {
-        String sql = "INSERT INTO alunos (nome_aluno, matricula, data_nascimento) VALUES (?,?,?)";
+        String sql = "INSERT INTO Alunos (nome_aluno, matricula, data_nascimento) VALUES (?,?,?)";
 
         try (Connection connection = ConnectionDataBase.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class AlunoDAO {
 
     public List<Aluno> listagemAlunos() {
         List<Aluno> alunos = new ArrayList<>();
-        String sql = "SELECT * FROM alunos";
+        String sql = "SELECT * FROM Alunos";
 
         try (Connection connection = ConnectionDataBase.getConnection();
         Statement statement = connection.createStatement();
@@ -57,7 +57,7 @@ public class AlunoDAO {
 
     public Aluno pesquisaIdAluno(int id) {
         Aluno aluno = null;
-        String sql = "SELECT * FROM alunos WHERE id_aluno = ?";
+        String sql = "SELECT * FROM Alunos WHERE id_aluno = ?";
 
         try (Connection connection = ConnectionDataBase.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -83,7 +83,7 @@ public class AlunoDAO {
 
     public boolean excluirAluno(int id) {
         Aluno aluno = null;
-        String sql = "DELETE FROM alunos WHERE id_aluno = ?";
+        String sql = "DELETE FROM Alunos WHERE id_aluno = ?";
 
         try(Connection connection = ConnectionDataBase.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql)){
