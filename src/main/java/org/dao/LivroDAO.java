@@ -11,7 +11,7 @@ import java.util.List;
 public class LivroDAO {
 
     public boolean cadastrarLivro(Livro livro) {
-        String sql = "INSERT INTO livros (titulo, autor, ano_publicacao, quantidade_estoque) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Livros (titulo, autor, ano_publicacao, quantidade_estoque) VALUES (?,?,?,?)";
 
         try (Connection connection = ConnectionDataBase.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -31,7 +31,7 @@ public class LivroDAO {
 
     public List<Livro> listagemLivros() {
         List<Livro> livros = new ArrayList<>();
-        String sql = "SELECT * FROM livros";
+        String sql = "SELECT * FROM Livros";
 
         try (Connection connection = ConnectionDataBase.getConnection();
              Statement statement = connection.createStatement();
@@ -57,7 +57,7 @@ public class LivroDAO {
 
     public Livro pesquisaIdLivro(int id) {
         Livro livro = null;
-        String sql = "SELECT * FROM livros WHERE id_livro = ?";
+        String sql = "SELECT * FROM Livros WHERE id_livro = ?";
         try (Connection connection = ConnectionDataBase.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)){
 
@@ -83,7 +83,7 @@ public class LivroDAO {
 
     public boolean excluirLivro(int id) {
         Livro livro = null;
-        String sql = "DELETE FROM livros WHERE id_livro = ?";
+        String sql = "DELETE FROM Livros WHERE id_livro = ?";
 
         try(Connection connection = ConnectionDataBase.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql)){
@@ -100,7 +100,7 @@ public class LivroDAO {
 
     public boolean atualizarEstoque(int idLivro, int estoque_atualizado) {
         Livro livro = null;
-        String sql = "UPDATE livros SET quantidade_estoque = ? WHERE id_livro = ?";
+        String sql = "UPDATE Livros SET quantidade_estoque = ? WHERE id_livro = ?";
 
         try(Connection connection = ConnectionDataBase.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)) {
