@@ -13,7 +13,7 @@ public class EmprestimoDAO {
     private LivroDAO livroDAO = new LivroDAO();
 
     public boolean fazerEmprestimo(Emprestimo emprestimo) {
-        String sql = "INSERT INTO emprestimos (id_aluno, id_livro, data_emprestimo, data_devolucao) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Emprestimos (id_aluno, id_livro, data_emprestimo, data_devolucao) VALUES(?,?,?,?)";
 
         try(Connection connection = ConnectionDataBase.getConnection()) {
 
@@ -48,7 +48,7 @@ public class EmprestimoDAO {
     }
 
     public boolean devolverEmprestimo(int idEmprestimo) {
-        String sql = "SELECT id_livro FROM emprestimos WHERE id_emprestimo = ?";
+        String sql = "SELECT id_livro FROM Emprestimos WHERE id_emprestimo = ?";
 
         try(Connection connection = ConnectionDataBase.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql)){
@@ -83,7 +83,7 @@ public class EmprestimoDAO {
 
     public List<Emprestimo> ListarEmprestimos() {
         List<Emprestimo> lista_emprestimo = new ArrayList<>();
-        String sql = "Select * FROM emprestimos";
+        String sql = "Select * FROM Emprestimos";
 
         try (Connection connection = ConnectionDataBase.getConnection();
              Statement statement = connection.createStatement();
